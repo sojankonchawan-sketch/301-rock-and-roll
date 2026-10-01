@@ -1,0 +1,832 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', 'Tahoma', sans-serif;
+  background: #f3f3f3;
+  color: #222;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.siteHeader {
+  background: #d13d3d;
+  padding: 14px 28px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.96;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.favoritePage {
+  max-width: 1400px;
+  margin: 28px auto 40px;
+  padding: 0 22px;
+}
+
+.pageTitle {
+  margin: 0 0 20px;
+  font-size: clamp(2rem, 2.5vw, 3rem);
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.explorerToolbar {
+  display: flex;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 22px;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid #dedede;
+  border-radius: 12px;
+}
+
+.searchField {
+  display: grid;
+  flex: 1;
+  gap: 7px;
+  max-width: 520px;
+  color: #222;
+  font-weight: 700;
+}
+
+.searchField input {
+  min-height: 44px;
+  padding: 0 13px;
+  border: 1px solid #bdbdbd;
+  border-radius: 7px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.searchField input:focus {
+  outline: 3px solid rgba(209, 61, 61, 0.2);
+  border-color: #d13d3d;
+}
+
+.sortField {
+  display: grid;
+  gap: 7px;
+  color: #222;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sortField select {
+  min-height: 44px;
+  padding: 0 30px 0 12px;
+  border: 1px solid #bdbdbd;
+  border-radius: 7px;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  cursor: pointer;
+}
+
+.explorerSummary {
+  min-height: 44px;
+  padding: 11px 14px;
+  color: #444;
+  white-space: nowrap;
+}
+
+.explorerSummary strong {
+  color: #d13d3d;
+  font-size: 1.25rem;
+}
+
+.clearButton,
+.followButton,
+.likeButton {
+  border: 1px solid #b83232;
+  border-radius: 7px;
+  padding: 10px 14px;
+  background: #fff;
+  color: #b83232;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.clearButton:hover,
+.followButton:hover,
+.likeButton:hover {
+  background: #fff2f2;
+}
+
+.bandHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.bandHeading h2 {
+  margin-bottom: 10px;
+}
+
+.followButton.following {
+  background: #b83232;
+  color: #fff;
+}
+
+.bandActions {
+  margin: -8px 0 22px;
+}
+
+.likeButton {
+  border-color: #555;
+  color: #333;
+}
+
+.likeButton span {
+  color: #d13d3d;
+}
+
+.emptyState {
+  padding: 54px 24px;
+  text-align: center;
+  background: #fff;
+  border: 1px dashed #bdbdbd;
+  border-radius: 12px;
+}
+
+.emptyState h2 {
+  margin: 0 0 8px;
+}
+
+.emptyState p {
+  margin: 0 0 20px;
+  color: #555;
+}
+
+.bandList {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.bandCard {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #d9d9d9;
+  border-radius: 18px;
+  padding: 20px 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.bandHero {
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+}
+
+.bandImageWrap {
+  width: min(30vw, 300px);
+  min-width: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ddd;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.bandImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bandDetails {
+  flex: 1;
+  min-width: 0;
+}
+
+.bandDetails h2 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 2vw, 2.8rem);
+  color: #171717;
+}
+
+.bandGenre {
+  margin: 0 0 22px;
+  font-size: 1.05rem;
+  color: #444;
+}
+
+.bandGenre span {
+  font-weight: 700;
+  color: #111;
+}
+
+.bandFoundedYear {
+  margin: -12px 0 22px;
+  color: #444;
+}
+
+.bandFoundedYear span {
+  font-weight: 700;
+  color: #111;
+}
+
+.membersSection h3 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.memberList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.memberItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.memberItem:last-child {
+  border-bottom: none;
+}
+
+.memberAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #f0f0f0;
+}
+
+.memberInfo {
+  font-size: 1rem;
+  color: #2b2b2b;
+  line-height: 1.5;
+}
+
+.gamePage,
+.gameDetailPage {
+  max-width: 1240px;
+  margin: 34px auto 64px;
+  padding: 0 24px;
+}
+
+.gameIntro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 22px;
+  border-bottom: 2px solid #222;
+}
+
+.gameEyebrow {
+  margin: 0 0 8px;
+  color: #b83232;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.gameIntro .pageTitle {
+  margin-bottom: 4px;
+  font-size: 2.5rem;
+}
+
+.gameIntroText {
+  margin: 0;
+  color: #555;
+}
+
+.gameCount {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+  padding: 0 2px 4px 24px;
+  color: #555;
+  white-space: nowrap;
+}
+
+.gameCount strong {
+  color: #222;
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.gameMetrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 18px 0 28px;
+  border-top: 1px solid #d7d7d7;
+  border-bottom: 1px solid #d7d7d7;
+  background: #fff;
+}
+
+.gameMetric {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  min-height: 76px;
+  padding: 18px 20px;
+  border-right: 1px solid #e2e2e2;
+}
+
+.gameMetric:last-child {
+  border-right: 0;
+}
+
+.gameMetric span {
+  margin-right: auto;
+  color: #555;
+}
+
+.gameMetric strong {
+  color: #222;
+  font-size: 1.6rem;
+}
+
+.gameMetric small {
+  color: #777;
+}
+
+.gameMetricHours strong {
+  color: #b83232;
+}
+
+.gameWorkspace {
+  display: grid;
+  grid-template-columns: minmax(270px, 0.78fr) minmax(0, 1.6fr);
+  align-items: start;
+  gap: 34px;
+}
+
+.gameFormPanel {
+  padding: 22px;
+  border: 1px solid #d9d9d9;
+  border-top: 4px solid #d13d3d;
+  border-radius: 7px;
+  background: #fff;
+}
+
+.gameSectionHeading h2,
+.gameListHeading h2 {
+  margin: 0;
+  color: #202020;
+  font-size: 1.35rem;
+}
+
+.gameForm {
+  display: grid;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.gameField {
+  display: grid;
+  gap: 7px;
+  color: #282828;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.gameField input,
+.gameField select,
+.gameSearchField input,
+.gameStatusFilter select {
+  width: 100%;
+  min-height: 43px;
+  padding: 0 11px;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  font-weight: 400;
+}
+
+.gameField input:focus,
+.gameField select:focus,
+.gameSearchField input:focus,
+.gameStatusFilter select:focus {
+  outline: 3px solid rgba(209, 61, 61, 0.18);
+  border-color: #b83232;
+}
+
+.gameField [aria-invalid="true"] {
+  border-color: #b83232;
+}
+
+.gameFieldError {
+  color: #a52323;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.gameFormActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.gamePrimaryButton,
+.gameQuietButton,
+.gameActionButton {
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid #b83232;
+  border-radius: 5px;
+  background: #b83232;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.gamePrimaryButton:hover {
+  background: #952929;
+}
+
+.gameQuietButton,
+.gameActionButton {
+  border-color: #c9c9c9;
+  background: #fff;
+  color: #333;
+}
+
+.gameQuietButton:hover,
+.gameActionButton:hover {
+  background: #f3f3f3;
+}
+
+.gameListSection {
+  min-width: 0;
+}
+
+.gameListHeading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.gameVisibleCount {
+  color: #666;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.gameFilters {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 175px;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.gameList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gameRow {
+  padding: 17px 2px 16px;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.gameRow:first-child {
+  border-top: 1px solid #d7d7d7;
+}
+
+.gameRowTopline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.gameStatus {
+  display: inline-flex;
+  align-items: center;
+  min-height: 25px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.gameStatus-not-started {
+  background: #fff0d4;
+  color: #77500b;
+}
+
+.gameStatus-playing {
+  background: #dff2ec;
+  color: #17604c;
+}
+
+.gameStatus-completed {
+  background: #e8e9f2;
+  color: #42496a;
+}
+
+.gameHours {
+  color: #555;
+  font-size: 0.86rem;
+}
+
+.gameRow h3 {
+  margin: 10px 0 3px;
+  color: #202020;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.gamePlatform {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.gameRowActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 13px;
+}
+
+.gameDetailLink {
+  margin-right: auto;
+  color: #a52d2d;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.gameDetailLink:hover {
+  color: #731d1d;
+}
+
+.gameActionButton {
+  min-height: 34px;
+  padding: 6px 10px;
+  font-size: 0.84rem;
+}
+
+.gameDeleteButton {
+  border-color: #d8b7b7;
+  color: #a52323;
+}
+
+.gameDeleteButton:hover {
+  background: #fff0f0;
+}
+
+.gameEmptyState {
+  padding: 35px 18px;
+  border: 1px dashed #bdbdbd;
+  color: #333;
+  text-align: center;
+}
+
+.gameEmptyState p {
+  margin: 7px 0 0;
+  color: #666;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.gameDetailPage {
+  max-width: 900px;
+  padding: 28px 30px 34px;
+  border: 1px solid #dedede;
+  border-top: 5px solid #d13d3d;
+  border-radius: 7px;
+  background: #fff;
+}
+
+.gameBackLink {
+  display: inline-block;
+  margin-bottom: 32px;
+  color: #a52d2d;
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.gameDetailPage h1 {
+  max-width: 760px;
+  margin: 0;
+  color: #202020;
+  font-size: 2.3rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.gameDetailLead {
+  margin: 12px 0 26px;
+  color: #666;
+}
+
+.gameDetailFacts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid #dedede;
+}
+
+.gameDetailFacts div {
+  padding: 17px 16px 8px 0;
+}
+
+.gameDetailFacts dt {
+  color: #666;
+  font-size: 0.88rem;
+}
+
+.gameDetailFacts dd {
+  margin: 7px 0 0;
+  color: #202020;
+  font-size: 1.12rem;
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .siteHeader {
+    padding: 12px 18px;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 0.92rem;
+  }
+
+  .favoritePage {
+    padding: 0 14px;
+  }
+
+  .bandCard {
+    padding: 16px 14px;
+  }
+
+  .explorerToolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .searchField {
+    max-width: none;
+  }
+
+  .sortField select {
+    width: 100%;
+  }
+
+  .explorerSummary {
+    min-height: 0;
+    padding: 0;
+  }
+
+  .clearButton {
+    align-self: flex-start;
+  }
+
+  .bandHero {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .bandImageWrap {
+    width: 100%;
+    min-width: unset;
+    max-width: 100%;
+  }
+
+  .memberInfo {
+    font-size: 0.92rem;
+  }
+
+  .bandHeading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .followButton {
+    align-self: flex-start;
+  }
+
+  .gamePage,
+  .gameDetailPage {
+    margin-top: 24px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .gameIntro {
+    align-items: flex-start;
+  }
+
+  .gameIntro .pageTitle {
+    font-size: 2rem;
+  }
+
+  .gameCount {
+    padding-left: 0;
+  }
+
+  .gameMetrics {
+    grid-template-columns: 1fr;
+  }
+
+  .gameMetric {
+    min-height: 60px;
+    padding: 12px 14px;
+    border-right: 0;
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  .gameMetric:last-child {
+    border-bottom: 0;
+  }
+
+  .gameWorkspace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .gameFormPanel {
+    padding: 18px;
+  }
+
+  .gameFilters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gameDetailPage {
+    padding-top: 22px;
+    padding-bottom: 26px;
+  }
+
+  .gameDetailPage h1 {
+    font-size: 1.8rem;
+  }
+
+  .gameDetailFacts {
+    grid-template-columns: 1fr;
+  }
+
+  .gameDetailFacts div {
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .gameDetailFacts div:last-child {
+    border-bottom: 0;
+  }
+}
